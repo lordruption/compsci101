@@ -15,4 +15,3 @@ def create_board(width, height):
 #This is for example, change the input when using
 b = create_board(6, 7)
 print(b)
-
