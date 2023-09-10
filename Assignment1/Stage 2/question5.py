@@ -7,7 +7,6 @@ def is_valid_column(board, column_name):
         return True
     else:
         return False
-
 def get_width(board):
     board_list = []
     board_list.append(board)
