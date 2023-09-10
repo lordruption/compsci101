@@ -82,18 +82,13 @@ def get_free_row(board, column_index):
             return row_index
     return -1
 def modify_board(board, column_index, row_index, player):
-    
+    row_list = list(board[row_index])
+    row_list[column_index] = player
+    board[row_index] = ''.join(row_list)
 
 
 
 
 
-board = ['....', '....', '....', '....']
-modify_board(board, 1, 0, 'X')
-print(board)
-# Result ['.X..', '....', '....', '....']
 
-# board = ['....', '....', '....', '....']
-# column_index = 1
-# row_index = 0
-# Player = X
+
