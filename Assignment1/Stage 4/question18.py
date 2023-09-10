@@ -103,5 +103,16 @@ def is_full(board):
     return True
 
 
+def is_winner(board, player):
+
+
+
+
+
+
+
+
+
 board = ['....', '....', '....', '....']
-print(is_full(board))
+print(is_winner(board, 'X')) # False
+print(is_winner(board, 'O')) # False
