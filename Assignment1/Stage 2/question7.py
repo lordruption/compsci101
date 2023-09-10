@@ -41,3 +41,5 @@ def create_board(width, height):
 
 board = create_board(7, 6)
 play_turn(board, "X")
+
+#Chen is gay
