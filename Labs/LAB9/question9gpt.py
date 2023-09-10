@@ -1,6 +1,6 @@
 list = []
 
-text = input("Enter your text: ")
+text = "<p>This is a paragraph!</p>"
 
 tag = False  # Initialize the tag variable outside the loop
 
@@ -12,14 +12,6 @@ for letter in text:
         tag = False
         list.append(current_tag)  # Append the current_tag to the list
     if tag == True:
-        if letter != "<":
-            current_tag += letter  # Build the current tag character by character
+        current_tag += letter  # Build the current tag character by character
 
-
-print("List of HTML tags:", list)
-
-
-
-
-
-#List of HTML tags: ['p', '/p']
+print(list)
