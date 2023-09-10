@@ -39,21 +39,13 @@ def next_player(current_player):
         return("X")
     elif current_player == "X":
         return("O")
-def play_turn(board, player):
-  prompt = "Player {} -- enter the column: ".format(player)
-  while True:
-    column = input(prompt)
-    if column.isdigit() and 0 <= int(column) < len(board[0]):
-      return int(column)
-    elif column == "quit":
-      return None
 def play_game(board):
     players = ("X")
     i = True
     while i == True:
         display_board(board)
         a = play_turn(board, players)
-        if a == None:
+        if a == "quit":
             print(f"Result: player {players} quits!")
             i = False
         else:
@@ -89,8 +81,24 @@ def add_piece_to_column(board, player, column_name):
     column_index = int(column_name)
     row_index = get_free_row(board, column_index)
     modify_board(board, column_index, row_index, player)
+def play_turn(board, player):
+    while True:
+        column = input(f"Player {player} -- enter the column: ")
+        if column == 'quit':
+            return 'quit'
+        elif column.isdigit():
+            column_index = int(column)
+            if 0 <= column_index < len(board[0]) and is_valid_move(board, column_index):
+                add_piece_to_column(board, player, column_index)
+                return str(column_index)
+def stage_3(width, height):
+    board = create_board(width, height)
+    play_game(board)
 
 
-board = ['....', '....', '....', '....']
-add_piece_to_column(board, 'X', '0')
-display_board(board)
+
+
+
+
+
+
