@@ -1,16 +1,9 @@
 def get_polygonal_numbers(sides, terms):
-    s = sides
     n = terms
-    answer_list = []
-    while n != 0:
-        answer = ((s - 2) * (n**2) - (s - 4) * n) / 2
-        answer_list.append(answer)
-        n + 1
-        return answer_list
+    s = sides
+    
 
-
-
-
+formula = ((s - 2) * (n**2) - (s - 4) * n) / 2
 
 
 
