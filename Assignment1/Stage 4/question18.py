@@ -94,15 +94,11 @@ def play_turn(board, player):
 def stage_3(width, height):
     board = create_board(width, height)
     play_game(board)
-
-
 def is_full(board):
     for column_index in range(len(board[0])):
         if is_valid_move(board, column_index):
             return False
     return True
-
-
 def is_winner(board, player):
 
 
