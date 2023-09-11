@@ -39,17 +39,6 @@ def next_player(current_player):
         return("X")
     elif current_player == "X":
         return("O")
-def play_game(board):
-    players = ("X")
-    i = True
-    while i == True:
-        display_board(board)
-        a = play_turn(board, players)
-        if a == "quit":
-            print(f"Result: player {players} quits!")
-            i = False
-        else:
-            players = next_player(players)
 def stage_2(width, height):
     board = create_board(width, height)
     play_game(board)
@@ -108,9 +97,45 @@ def is_winner(board, player):
         if f"{player * 4}" in column:
             return True
     return False
-
+def play_game(board):
+    player = ("X")
+    i = True
+    while i == True:
+        display_board(board)
+        user_move = play_turn(board, player)
+        if user_move == "quit":
+            display_board(board)
+            print(f"Result: player {player} quits!")
+            i = False
+        elif is_full(board) == True:
+            display_board(board)
+            print("Result: draw")
+            i = False
+        elif is_winner(board, player) == True:
+            display_board(board)
+            print(f"Result: player {player} wins!")
+            i = False
+        else:
+            player = next_player(player)
+            i = True
 
 
 board = ['....', '....', '....', '....']
-print(is_winner(board, 'X')) # False
-print(is_winner(board, 'O')) # False
+play_game(board)
+
+0
+1
+2
+3
+1
+0
+3
+2
+0
+1
+2
+3
+0
+1
+2
+3
