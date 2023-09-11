@@ -1,11 +1,10 @@
 def get_polygonal_numbers(sides, terms):
-    n = terms
     s = sides
-    i = 0
-    while i != 0:
-        
-
-formula = ((s - 2) * (n**2) - (s - 4) * n) / 2
+    answer_list = []
+    for n in range(1, terms + 1): 
+        formula = ((s - 2) * (n**2) - (s - 4) * n) / 2
+        answer_list.append(int(formula))
+    return answer_list
 
 
 
