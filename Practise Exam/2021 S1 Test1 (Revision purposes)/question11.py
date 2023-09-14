@@ -1,4 +1,7 @@
 def get_funny_average(number_string, sentinel_value):
+    list_number_string = []
+    for float in number_string:
+        list_number_string.append(float)
     answer = 0 
     while answer < sentinel_value:
         for i in answer:
@@ -10,9 +13,6 @@ def get_funny_average(number_string, sentinel_value):
                 answer + i
                 return answer
 
-for char in number_string:
-    if char == ",":
-        append()
 
 
 
