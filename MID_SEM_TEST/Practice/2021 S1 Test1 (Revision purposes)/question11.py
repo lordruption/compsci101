@@ -21,4 +21,4 @@ def get_funny_average(number_string, sentinel_value):
 
 number_string = "21.543,35.814"
 sentinel_value = 32.9908
-print("The funny average is:", get_funny_average(number_string, sentinel_value))
+print("The funny average is:", get_funny_average(number_string, sentinel_value)) 
