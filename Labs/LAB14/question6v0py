@@ -1,0 +1,16 @@
+def process_transactions(filename):
+    text_open = open(filename, "r")
+    text_read = text_open.read()
+    return text_read
+
+
+
+
+
+
+
+
+
+
+
+print(process_transactions(('Transactions1.txt'))
