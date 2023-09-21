@@ -1,10 +1,8 @@
 def process_transactions(filename):
-    file_open = open(filename, "r")
-    file_read = file_open.read()
-    text_list = file_read.split()
     name = None
-    total_value = 0 
-    for line in text_list:
+    total_value = 0
+    accumulated_list = []
+    for line in filename:
         line_split = line.split(':')
         name = line_split[0]
         amount = line_split[1]
@@ -16,11 +14,9 @@ def process_transactions(filename):
         return (name, total_value)
 
 
-filename = "Transactions1.txt"
+filename = ['Jennine:0', 'Abdelmoula:500', 'Ornella:-200', 'Jennine:-300', 'Abdelmoula:-150', 'Costinel:250', 'Jennine:427', 'Costinel:-90', 'Abdelmoula:-120', 'Costinel:107', 'Jennine:23', 'Ornella:139', 'Asad:67', 'Asad:23', 'Asad:100', 'Jennine:217']
 transaction_data = process_transactions(filename)
-if transaction_data[1] < 0:
-    print(f"The sum of transactions for {transaction_data[0]} = -${transaction_data[1] * -1}")
-else:
-    print(f"The sum of transactions for {transaction_data[0]} = ${transaction_data[1]}")
+print(transaction_data)
 
-#Alpha Version
+
+# In this version I will hard code the data in the program
