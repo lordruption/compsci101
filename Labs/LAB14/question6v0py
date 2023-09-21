@@ -1,7 +1,21 @@
 def process_transactions(filename):
+    # Empty Variable
+    name = None
+    totals = {}
+    # Reading Files
     text_open = open(filename, "r")
     text_read = text_open.read()
-    return text_read
+    text_list = text_read.split() 
+    text_open.close()
+    # Sorting List
+    for item in text_list:
+        name, amount = item.split(":")
+        amount = int(amount)
+        if name in totals:
+            totals[name] += amount
+        else:
+            totals[name] = amount
+    print(totals)
 
 
 
@@ -10,7 +24,12 @@ def process_transactions(filename):
 
 
 
-
-
-
-print(process_transactions(('Transactions1.txt'))
+filename = "Transactions1.txt"
+transaction_data = process_transactions(filename)
+'''
+if transaction_data[1] < 0:
+    print(f"The sum of transactions for {transaction_data[0]} = -${transaction_data[1] * -1}")
+else:
+    print(f"The sum of transactions for {transaction_data[0]} = ${transaction_data[1]}")
+#Output: The sum of transactions for Jennine = $367
+'''
