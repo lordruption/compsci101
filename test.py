@@ -1,17 +1,3 @@
-def print_ox_xo_pattern(number_of_rows, number_of_columns):
-
-
-
-
-
-
-
-#testcase 1
-print_ox_xo_pattern(5, 4)
-'''
-oxox
-xoxo
-oxox
-xoxo
-oxox
-'''
+the_list = [[2, 4, -16, 80, 27], [1, -4, 120, 18, -7], [-20, 14, 70, 8, 130]]
+replace_negatives(the_list)
+print(the_list)
