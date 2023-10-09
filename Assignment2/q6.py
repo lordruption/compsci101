@@ -27,7 +27,7 @@ def play_round(question_items, question_index):
 
     remaining_attempt = 3  # Count the number of attempts allowed
 
-    while remaining_attempt != 0:
+    while remaining_attempt < 0:
         # Call the get_user_selection function to get the user's choice.
         selection = get_user_selection()
 
@@ -45,7 +45,7 @@ def play_round(question_items, question_index):
             print()
             break  # Exit the outer loop after a correct answer
 
-    if remaining_attempt == 0:
+    if remaining_attempt <= 0:
         # Display a message if the user runs out of attempts without providing the correct answer.
         print(f"You have not identified the meaning of {maori_word}")
         print(f"{maori_word} means {maori_answer}")
