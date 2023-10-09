@@ -1,11 +1,12 @@
-# This function takes input, reprompts if not valid
+#This function takes user_selection but it to be in the range of 1 to 5
 def get_user_selection():
     while True:
-        user_input = input("Enter your selection (1 to 5): ")
-        if user_input.isdigit():
-            user_input_int = int(user_input)
-            if user_input_int in range(1, 6):
-                return user_input_int
+        selection = input("Enter your selection (1 to 5): ")
+        if selection.isdigit():
+            selection = int(selection)
+            if 1 <= selection <= 5:
+                return selection
         print("Please enter a number from 1 to 5")
+
 
 print(get_user_selection())
