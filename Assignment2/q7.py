@@ -1,5 +1,29 @@
 import random
 
+def main(): #Do not alter in any way!
+    filename = "TeReoMaori_to_English_Dictionary.txt"
+    file_contents = read_dictionary_file(filename)
+    maori_english_dict = get_maori_english_dictionary(file_contents)
+    name = input("Please enter your name: ")
+    play_game(maori_english_dict, name)
+    
+def get_five_dictionary_items(maori_english_dict): #Do not alter in any way!
+    dictionary_items = []
+    maori_words = list(maori_english_dict.keys())
+    while len(dictionary_items) < 5:
+        random_index = random.randrange(0, len(maori_words))
+        dictionary_item = maori_words[random_index], maori_english_dict[maori_words[random_index]]
+        while dictionary_item in dictionary_items:
+            random_index = random.randrange(0, len(maori_words))
+            dictionary_item = maori_words[random_index], maori_english_dict[maori_words[random_index]]
+        dictionary_items.append(dictionary_item)
+    return dictionary_items
+
+#This function gets a random index into this list of tuples
+def get_question_index(question_items): #Do not alter in any way!
+    return random.randrange(len(question_items))
+
+
 #This function reads filename.txt - Q1
 def read_dictionary_file(filename):
     input_stream = open(filename, 'r', encoding='utf-8')
@@ -21,13 +45,12 @@ def get_maori_english_dictionary(contents):
     return maori_english_dictionary
 
 #This function prints user's name and game instruction - Q4
-def print_quiz_info(name): 
+def print_quiz_info(name):
     name_length = len(name)
     #This prints specific amount of * so that its the lenght of name
     print("*" * 33 + "*" * name_length)
     print(f"*Welcome {name} to the Reo Māori Quiz!*")
     print("*" * 33 + "*" * name_length)
-
     #Below is standard output DO NOT CHANGE
     print()
     print("The quiz has 5 rounds.")
@@ -68,7 +91,6 @@ def play_round(question_items, question_index):
         if user_selection == target_key_int:
             print()
             print(f"Congratulations! {target_word} does mean '{target_meaning}'!")
-            print()
             return 1
         else:
             print("Your answer is incorrect.")
@@ -80,41 +102,34 @@ def play_round(question_items, question_index):
         print(f"You have not identified the meaning of {target_word}")
         print(f"{target_word} means '{target_meaning}'")
         print("Better luck next time!")
-        print()
         return 0
-    
-
+#This function plays one game with 5 rounds
 def play_game(maori_english_dict, name):
     print_quiz_info(name)
-
-
-
-def main(): #Do not alter in any way!
-    filename = "TeReoMaori_to_English_Dictionary.txt"
-    file_contents = read_dictionary_file(filename)
-    maori_english_dict = get_maori_english_dictionary(file_contents)
-    name = input("Please enter your name: ")
-    play_game(maori_english_dict, name)
-    
-def get_five_dictionary_items(maori_english_dict): #Do not alter in any way!
-    dictionary_items = []
-    maori_words = list(maori_english_dict.keys())
-    while len(dictionary_items) < 5:
-        random_index = random.randrange(0, len(maori_words))
-        dictionary_item = maori_words[random_index], maori_english_dict[maori_words[random_index]]
-        while dictionary_item in dictionary_items:
-            random_index = random.randrange(0, len(maori_words))
-            dictionary_item = maori_words[random_index], maori_english_dict[maori_words[random_index]]
-        dictionary_items.append(dictionary_item)
-    return dictionary_items
-
-def get_question_index(question_items): #Do not alter in any way!
-    return random.randrange(len(question_items))
-
+    round_count = 0
+    final_quiz_score = 0
+    while round_count < 5:
+        question_items = get_five_dictionary_items(maori_english_dict)
+        round_count += 1
+        question_index = get_question_index(question_items)
+        print()
+        print("Round", round_count)
+        print()
+        score = play_round(question_items, question_index)
+        if score == 1:
+            final_quiz_score += 1
+            continue
+        elif score == 0:
+            continue
+    else:
+        print()
+        print("Your final quiz score is:", final_quiz_score)
+        quit
+        
 
 
 
 
 #TestCase
-random.seed(5)  
+random.seed(5)
 main()
