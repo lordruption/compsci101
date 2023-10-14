@@ -1,6 +1,0 @@
-Ryu: 35
-Cammy: 33
-Gouki: 31
-Chun Li: 29
-Ken: 27
-Blanka: 23
