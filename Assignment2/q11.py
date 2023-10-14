@@ -63,8 +63,10 @@ def print_quiz_info(name):
     print("The quiz has 5 rounds.")
     print("In each round you have to work out the English meaning of a Māori word.")
     print("You are given 5 options to select from and 3 attempts to select the right one.")
-    print("Get the right answer and you score 1 point for the round.")
-    print("Otherwise you score 0 points for the round.")
+    print("Getting the right answer on the:")
+    print("First attempt = 7 points.")
+    print("Second attempt = 5 points.")
+    print("Third attempt = 3 points.")
     print("Good luck!")
 
 #This function takes user_selection but it to be in the range of 1 to 5 - Q5
@@ -171,12 +173,17 @@ def handle_high_scores(high_scores_dict, name, score, high_score_filename):
 #Question - Q8
 def get_high_scores(filename):
     dict_name_score = {}
-    input_stream = open(filename, 'r', encoding='utf-8')
-    read_file = input_stream.read().split('\n')
-    input_stream.close()
-    for item in read_file:
-        name, score = item.split(':')
-        dict_name_score[name] = int(score)
+    with open(filename, 'r', encoding='utf-8') as input_stream:
+        for line in input_stream:
+            line = line.strip()  # Remove leading/trailing white spaces
+            if not line:
+                continue  # Skip empty lines
+            parts = line.split(':')
+            if len(parts) == 2:
+                name, score = parts
+                dict_name_score[name] = int(score)
+            else:
+                print(f"Skipped line: {line} (malformed data)")
     return dict_name_score
 
 #This function plays one game with 5 rounds
@@ -194,20 +201,22 @@ def play_game(maori_english_dict, high_scores_dict, name, output_filename):
         score = play_round(question_items, question_index)
         if score > 1:
             final_quiz_score += score
+            print("Current score:",final_quiz_score)
             continue
         elif score == 0:
+            print("Current score:",final_quiz_score)
             continue
     else:
         print()
         print("Your final quiz score is:", final_quiz_score)
-        handle_high_scores(high_scores_dict, name, score, output_filename)
+        handle_high_scores(high_scores_dict, name, final_quiz_score, output_filename)
 
 
 
 
 
 #TestCase
-random.seed(10)    
+random.seed(30)
 main()
 print("\nFile Contents\n")
 print_contents('echa347.txt')
