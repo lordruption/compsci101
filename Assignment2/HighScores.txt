@@ -1,4 +1,5 @@
-Ann: 29
-Damir: 25
-Andrew: 23
-John: 21
+Koro: 31
+Lara: 27
+Janet: 25
+William: 23
+Jonathan: 19

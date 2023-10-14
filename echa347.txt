@@ -1,0 +1,5 @@
+Koro: 31
+Lara: 27
+Janet: 25
+William: 23
+Jonathan: 19

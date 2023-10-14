@@ -25,6 +25,12 @@ def get_five_dictionary_items(maori_english_dict): #Do not alter in any way!
 def get_question_index(question_items): #Do not alter in any way!
     return random.randrange(len(question_items))
 
+def print_contents(filename): #Do not provide its implementation
+    input_stream = open(filename, 'r')
+    content = input_stream.read()
+    input_stream.close()
+    print(content)
+
 #This function reads filename.txt - Q1
 def read_dictionary_file(filename):
     input_stream = open(filename, 'r', encoding='utf-8')
@@ -61,7 +67,7 @@ def print_quiz_info(name):
     print("Otherwise you score 0 points for the round.")
     print("Good luck!")
 
-#This function takes user_selection but it to be in the range of 1 to 5
+#This function takes user_selection but it to be in the range of 1 to 5 - Q5
 def get_user_selection():
     while True:
         selection = input("Enter your selection (1 to 5): ")
@@ -71,7 +77,7 @@ def get_user_selection():
                 return selection
         print("Please enter a number from 1 to 5")
 
-#This function plays a single round of the Reo Māori Quiz
+#This function plays a single round of the Reo Māori Quiz - Q9
 def play_round(question_items, question_index):
     attempts = 3
     target_word = question_items[question_index][0]
@@ -111,7 +117,6 @@ def play_round(question_items, question_index):
         print("Better luck next time!")
         print()
         return 0
-
 
 #This function see if the new input score should be in the top 5 list - Q10
 def handle_high_scores(high_scores_dict, name, score, high_score_filename):
@@ -163,13 +168,7 @@ def handle_high_scores(high_scores_dict, name, score, high_score_filename):
                 create_file.write(f"{player}: {player_score}\n")
     create_file.close()
 
-def print_contents(filename): #Do not provide its implementation
-    input_stream = open(filename, 'r')
-    content = input_stream.read()
-    input_stream.close()
-    print(content)
-
-#Question 8
+#Question - Q8
 def get_high_scores(filename):
     dict_name_score = {}
     input_stream = open(filename, 'r', encoding='utf-8')
@@ -179,7 +178,6 @@ def get_high_scores(filename):
         name, score = item.split(':')
         dict_name_score[name] = int(score)
     return dict_name_score
-
 
 #This function plays one game with 5 rounds
 def play_game(maori_english_dict, high_scores_dict, name, output_filename):
@@ -194,15 +192,15 @@ def play_game(maori_english_dict, high_scores_dict, name, output_filename):
         print("Round", round_count)
         print()
         score = play_round(question_items, question_index)
-        if score == 1:
-            final_quiz_score += 1
+        if score > 1:
+            final_quiz_score += score
             continue
         elif score == 0:
             continue
     else:
         print()
         print("Your final quiz score is:", final_quiz_score)
-        quit
+        handle_high_scores(high_scores_dict, name, score, output_filename)
 
 
 
