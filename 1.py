@@ -1,1 +1,0 @@
-"e" in word and 5 <= len(word) and len(word) <= 10 and word[0].isupper()
